@@ -1,3 +1,72 @@
+# SSL Server Application
+
+## Overview
+This is a simple Spring Boot application that demonstrates the use of SHA-256 hashing. The application includes a REST controller that generates a hash from a name and returns it along with some static data.
+
+## Features
+- Spring Boot web application
+- REST endpoint at `/hash`
+- SHA-256 hash generation
+- Basic string manipulation
+
+## Prerequisites
+- Java Development Kit (JDK) 8 or higher
+- Maven
+- Spring Boot dependencies (handled by Maven)
+
+## Project Structure
+com.snhu.sslserver/
+├── SslServerApplication.java    # Main application class
+└── SslServerController.java     # REST controller with hash endpoint
+
+
+## Functionality
+The application provides a single endpoint:
+- `GET /hash`: Returns:
+  - Static data string: "Hello World Check Sum!"
+  - Processed name (first name + last name)
+  - SHA-256 hash of the name
+  - Name of the cipher algorithm used (SHA-256)
+
+## How to Run
+1. Ensure you have Java and Maven installed
+2. Clone the repository or copy the code
+3. Navigate to the project directory
+4. Run the application:
+   
+mvn spring-boot:run
+5. Access the endpoint at: `http://localhost:8080/hash`
+
+## Code Details
+### SslServerApplication
+- Main Spring Boot application class
+- Launches the application using SpringApplication.run()
+
+### SslServerController
+- REST controller with one endpoint
+- Methods:
+  - `myHash()`: Generates and returns the hash information
+  - `bytesToHex()`: Converts byte array to hexadecimal string
+- Features:
+  - Uses SHA-256 algorithm via MessageDigest
+  - Processes name string by splitting and recombining first and last names
+  - Returns formatted HTML response with data and hash
+
+## Dependencies
+- Spring Boot Starter Web (included via @SpringBootApplication)
+- Java Security (java.security package)
+- Java Math (BigInteger)
+- Java NIO Charset (StandardCharsets)
+
+## Output Example
+When accessing `/hash`, you'll see something like:
+
+data: Hello World Check Sum!
+
+Name: Brad Mills
+
+Name of Cipher Algorithm Used: SHA256 - CheckSum value: 8f434346648f6b96df89dda901c5176b10a6d83961dd3c1ac88b59b2dc327aa4
+
 # CS305
 Software Security
 
